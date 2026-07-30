@@ -14,6 +14,7 @@ FreshBite is a responsive online food ordering website that allows users to expl
 📦 Order history management
 🧾 Checkout with delivery details
 📱 Responsive design for mobile devices
+
 🛠️ Technologies Used
 HTML5
 CSS3
