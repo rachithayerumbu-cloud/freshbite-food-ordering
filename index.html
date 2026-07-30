@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshBite - Gourmet Food Delivery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo"> FreshBite</div>
+        <nav class="nav-links" id="navLinks">
+                <a href="#home" class="nav-item">Home</a>
+            <a href="#restaurants" class="nav-item active">Restaurants</a>
+            <a href="#menu" class="nav-item">Menu</a>
+             <a href="#account" class="nav-item">Account & whislist</a>
+            <a href="#about-us" class="nav-item">About Us</a>
+            <a href="#contact-us" class="nav-item">Contact Us</a>
+           
+        </nav>
+        <div class="nav-right">
+            <button class="btn-login" id="loginBtn" onclick="openLoginModal()">Login</button>
+            <a href="#cart" class="cart-icon">
+                🛒 <span class="cart-badge" id="cartCount">0</span>
+            </a>
+            <div class="hamburger" id="hamburger">☰</div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+   <section id="home" class="hero">
+        <h1>Delicious Food, Delivered Fast</h1>
+        <p>Order from top local restaurants or explore our handcrafted gourmet recipes.</p>
+    </section>
+
+    <main class="main-container">
+
+        <!-- RESTAURANTS SECTION -->
+        <section id="restaurants" class="section-block">
+            <h2 class="section-title">Partner Restaurants</h2>
+            
+            <div class="filter-group">
+                <span>Cuisine:</span>
+                <button class="res-filter-btn active" onclick="filterRestaurantCuisine('All', event)">All</button>
+                <button class="res-filter-btn" onclick="filterRestaurantCuisine('Italian', event)">Italian</button>
+                <button class="res-filter-btn" onclick="filterRestaurantCuisine('American', event)">American</button>
+                <button class="res-filter-btn" onclick="filterRestaurantCuisine('Asian', event)">Asian</button>
+                <button class="res-filter-btn" onclick="filterRestaurantCuisine('Desserts', event)">Desserts</button>
+            </div>
+
+            <div class="filter-group">
+                <span>Rating:</span>
+                <button class="res-filter-btn active" onclick="filterRestaurantRating(0, event)">All Ratings</button>
+                <button class="res-filter-btn" onclick="filterRestaurantRating(4.5, event)">4.5+ ★</button>
+                <button class="res-filter-btn" onclick="filterRestaurantRating(4.8, event)">4.8+ ★</button>
+            </div>
+
+            <div class="restaurant-grid" id="restaurantGrid"></div>
+        </section>
+
+        <!-- MENU SECTION -->
+        <section id="menu" class="section-block">
+            <div class="menu-header">
+                <h2 class="section-title" id="menuTitle">Explore Full Menu</h2>
+                <button class="btn-secondary" id="resetRestaurantFilter" onclick="resetRestaurantFilter()" style="display:none;">View All Restaurants</button>
+            </div>
+
+            <div class="filter-group">
+                <span>Category:</span>
+                <button class="filter-btn active" onclick="filterCategory('All', event)">All</button>
+                <button class="filter-btn" onclick="filterCategory('Italian', event)">Italian</button>
+                <button class="filter-btn" onclick="filterCategory('American', event)">American</button>
+                <button class="filter-btn" onclick="filterCategory('Asian', event)">Asian</button>
+                <button class="filter-btn" onclick="filterCategory('Desserts', event)">Desserts</button>
+            </div>
+
+            <div class="filter-group">
+                <span>Dietary:</span>
+                <button class="filter-btn active" onclick="filterDiet('All', event)">All</button>
+                <button class="filter-btn" onclick="filterDiet('Veg', event)">🟢 Veg</button>
+                <button class="filter-btn" onclick="filterDiet('Non-Veg', event)">🔴 Non-Veg</button>
+                <button class="filter-btn" onclick="filterDiet('Gluten-Free', event)">🌾 Gluten-Free</button>
+            </div>
+
+            <div class="food-grid" id="foodGrid"></div>
+        </section>
+
+        <!-- CART & CHECKOUT SECTION -->
+        <section id="cart" class="section-block">
+            <h2 class="section-title">Your Order Cart</h2>
+            <div class="cart-layout">
+                <div class="cart-items-container" id="cartContainer"></div>
+                <div class="checkout-box">
+                    <h3>Checkout Details</h3>
+                    <form id="checkoutForm" onsubmit="handleCheckout(event)">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" placeholder="Enter your name" required>
+
+                        <label for="address">Delivery Address (Mangalore)</label>
+                        <textarea id="address" rows="2" placeholder="Street, Flat No., City" required></textarea>
+
+                        <div class="checkout-summary">
+                            <span>Total (25% Discount Included):</span>
+                            <strong id="checkoutTotal">₹0.00</strong>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Place Order</button>
+                    </form>
+                    
+                </div>
+            </div>
+        </section>
+          <!-- ACCOUNT & WISHLIST SECTION -->
+        <section id="account" class="section-block">
+            <h2 class="section-title">Account & Wishlist</h2>
+            <div class="account-grid">
+                <div class="account-card" id="userInfoBlock"></div>
+                <div class="account-card">
+                    <h3 class="account-block-title">Saved Address</h3>
+                    <div id="savedAddressContent"></div>
+                </div>
+                <div class="account-card" style="grid-column: 1 / -1;">
+                    <h3 class="account-block-title">Your Wishlist</h3>
+                    <div id="wishlistGridContainer" class="wishlist-grid"></div>
+                </div>
+                <div class="account-card" style="grid-column: 1 / -1;">
+                    <h3 class="account-block-title">Recent Orders</h3>
+                    <div id="orderHistoryContent"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+        <!-- ABOUT US SECTION -->
+        <section id="about-us" class="section-block">
+            <div class="card-container" id="aboutUsContainer"></div>
+        </section>
+
+        <!-- CONTACT US SECTION -->
+        <section id="contact-us" class="section-block">
+            <div class="card-container" id="contactUsContainer"></div>
+        </section>
+
+      
+
+    <!-- PRODUCT DETAIL MODAL -->
+    <div class="modal-overlay" id="productModal">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeProductModal()">×</button>
+            <div id="productModalBody"></div>
+        </div>
+    </div>
+
+    <!-- LOGIN MODAL -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-card" style="max-width: 360px;">
+            <button class="modal-close" onclick="closeLoginModal()">×</button>
+            <h3>Customer Login</h3>
+            <form onsubmit="handleLogin(event)" style="margin-top: 15px;">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username" required style="width:100%; padding:8px; margin-bottom:10px; border:1px solid #ccc; border-radius:4px;">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password" required style="width:100%; padding:8px; margin-bottom:15px; border:1px solid #ccc; border-radius:4px;">
+                <button class="btn-primary" type="submit" style="width: 100%;">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

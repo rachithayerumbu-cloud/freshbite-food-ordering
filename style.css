@@ -1,0 +1,816 @@
+:root {
+    --primary-orange: #ff5722;
+    --primary-hover: #e64a19;
+    --bg-light: #f8f9fa;
+    --text-dark: #2c3e50;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 24px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--primary-orange);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav-links a.active, .nav-links a:hover {
+    color: var(--primary-orange);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.cart-icon {
+    position: relative;
+    font-size: 1.4rem;
+    text-decoration: none;
+}
+
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background: var(--primary-orange);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* HERO */
+.hero {
+    min-height: 600px;
+    height: 85vh;
+    background: linear-gradient(
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.45)
+    ),
+    url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuMuwZ8GyB9g_h-ZAG4zgDjmsqVqpQQGenSXiz3ZMPaA&s=10');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+/* LAYOUT & SECTIONS */
+.main-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.section-block {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: var(--text-dark);
+    border-bottom: 2px solid var(--primary-orange);
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+.card-container {
+    background: #FFF8F0;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+}
+
+/* FILTERS */
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+.filter-btn, .res-filter-btn {
+    border: 1px solid #ddd;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.filter-btn.active, .res-filter-btn.active, .filter-btn:hover, .res-filter-btn:hover {
+    background: var(--primary-orange);
+    color: #fff;
+    border-color: var(--primary-orange);
+}
+
+/* RESTAURANT GRID */
+.restaurant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.restaurant-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: var(--card-shadow);
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.restaurant-card:hover {
+    transform: translateY(-4px);
+}
+
+.restaurant-title {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.restaurant-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 0.85rem;
+}
+
+.badge-rating {
+    background: #2e7d32;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* FOOD GRID */
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 20px;
+}
+
+.food-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+.food-img-wrapper {
+    position: relative;
+    height: 150px;
+}
+
+.food-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.wishlist-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(255,255,255,0.8);
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.food-details {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.food-restaurant-name {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.food-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4px 0;
+}
+
+.food-title {
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.tag-veg { color: #2e7d32; font-size: 0.75rem; font-weight: bold; }
+.tag-nonveg { color: #c62828; font-size: 0.75rem; font-weight: bold; }
+
+.food-desc {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 10px;
+    flex-grow: 1;
+}
+
+.food-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.food-price {
+    font-weight: bold;
+    font-size: 1.05rem;
+}
+
+/* BUTTONS */
+.btn-primary {
+    background: var(--primary-orange);
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-primary:hover { background: var(--primary-hover); }
+
+.btn-secondary {
+    background: #e0e0e0;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-login {
+    background: transparent;
+    border: 1px solid var(--primary-orange);
+    color: var(--primary-orange);
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* CART & CHECKOUT */
+.cart-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+}
+
+.cart-items-container {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-controls {
+    display: flex;
+    align-items: center;
+}
+
+.cart-btn-qty {
+    width: 24px;
+    height: 24px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+}
+
+.checkout-box {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+}
+
+.checkout-box label {
+    font-size: 0.85rem;
+    margin-top: 8px;
+    display: block;
+}
+
+.checkout-box input, .checkout-box textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.checkout-summary {
+    margin-top: 15px;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* ACCOUNT & WISHLIST */
+.account-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
+}
+
+.account-card {
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+}
+
+.account-block-title {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.account-block-sub {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 10px;
+}
+
+/* MODAL */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-overlay.active { display: flex; }
+
+.modal-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px; right: 15px;
+    background: none; border: none;
+    font-size: 1.5rem; cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .cart-layout { grid-template-columns: 1fr; }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px; left: 0; width: 100%;
+        background: #fff;
+        padding: 15px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .nav-links.active { display: flex; }
+    .hamburger { display: block; }
+}
+/* =========================
+   EXTRA ANIMATIONS & HOVER EFFECTS
+   ========================= */
+
+
+/* Smooth page loading */
+body {
+    animation: pageFade 0.6s ease-in;
+}
+
+@keyframes pageFade {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* Navbar animation */
+.navbar {
+    animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+
+/* Logo hover */
+.logo {
+    transition: 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+
+
+/* Navigation hover animation */
+.nav-links a {
+    position: relative;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: var(--primary-orange);
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+
+/* Hero animation */
+.hero h1 {
+    animation: heroText 1s ease;
+}
+
+.hero p {
+    animation: heroText 1.2s ease;
+}
+
+
+@keyframes heroText {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Restaurant cards animation */
+.restaurant-card {
+    animation: cardAppear 0.5s ease;
+}
+
+
+.restaurant-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+
+@keyframes cardAppear {
+
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+/* Food cards hover */
+.food-card {
+
+    transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+}
+
+
+.food-card:hover {
+
+    transform: translateY(-10px);
+
+    box-shadow:
+    0 15px 30px rgba(0,0,0,0.18);
+
+}
+
+
+
+/* Food image zoom effect */
+.food-img {
+
+    transition: transform 0.4s ease;
+
+}
+
+
+.food-img-wrapper {
+
+    overflow: hidden;
+
+}
+
+
+.food-card:hover .food-img {
+
+    transform: scale(1.12);
+
+}
+
+
+
+/* Wishlist button animation */
+
+.wishlist-btn {
+
+    transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+
+}
+
+
+.wishlist-btn:hover {
+
+    transform: rotate(15deg) scale(1.2);
+
+    background:white;
+
+}
+
+
+
+/* Buttons animation */
+
+.btn-primary,
+.btn-secondary,
+.btn-login,
+.filter-btn,
+.res-filter-btn {
+
+
+    transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+
+}
+
+
+
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn-login:hover,
+.filter-btn:hover,
+.res-filter-btn:hover {
+
+
+    transform: translateY(-3px);
+
+    box-shadow:
+    0 6px 15px rgba(255,87,34,0.3);
+
+}
+
+
+
+/* Cart hover */
+
+.cart-icon {
+
+    transition: transform 0.3s ease;
+
+}
+
+
+.cart-icon:hover {
+
+    transform: scale(1.2);
+
+}
+
+
+
+/* Cart item animation */
+
+.cart-item {
+
+    animation: cartSlide 0.4s ease;
+
+}
+
+
+@keyframes cartSlide {
+
+    from {
+
+        opacity:0;
+        transform:translateX(-20px);
+
+    }
+
+    to {
+
+        opacity:1;
+        transform:translateX(0);
+
+    }
+
+}
+
+
+
+/* Checkout box hover */
+
+.checkout-box,
+.account-card,
+.card-container {
+
+
+    transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+}
+
+
+.checkout-box:hover,
+.account-card:hover,
+.card-container:hover {
+
+
+    transform: translateY(-5px);
+
+    box-shadow:
+    0 12px 25px rgba(0,0,0,0.12);
+
+}
+
+
+
+/* Modal animation */
+
+.modal-card {
+
+    animation: popup 0.3s ease;
+
+}
+
+
+@keyframes popup {
+
+    from {
+
+        opacity:0;
+        transform:scale(0.7);
+
+    }
+
+    to {
+
+        opacity:1;
+        transform:scale(1);
+
+    }
+
+}
+
+
+
+/* Filter button click effect */
+
+.filter-btn:active,
+.res-filter-btn:active,
+.btn-primary:active {
+
+    transform:scale(0.95);
+
+}
+
+
+
+/* Mobile menu animation */
+
+.nav-links.active {
+
+    animation: menuOpen 0.3s ease;
+
+}
+
+
+@keyframes menuOpen {
+
+    from {
+
+        opacity:0;
+        transform:translateY(-15px);
+
+    }
+
+    to {
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
