@@ -88,8 +88,9 @@ The project focuses on creating a modern user experience with responsive design,
 - Desktop Friendly
 - Flexible Layout
 - Responsive Navigation
+ ---
 
   # 🚀 Technologies Used
-HTML 5
-CSS3
-JavaScript
+-HTML 5
+-CSS3
+-JavaScript
