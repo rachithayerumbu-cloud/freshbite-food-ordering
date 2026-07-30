@@ -91,6 +91,6 @@ The project focuses on creating a modern user experience with responsive design,
  ---
 
   # 🚀 Technologies Used
--HTML 5
--CSS3
--JavaScript
+HTML 5,
+CSS3,
+JavaScript
